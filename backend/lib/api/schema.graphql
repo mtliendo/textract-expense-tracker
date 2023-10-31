@@ -1,11 +1,14 @@
+#object.Type.Text to get the label. object.ValueDetection.Text to get the key
 type Expense @model @auth(rules: [{ allow: owner }]) {
 	id: ID!
 	owner: String! @auth(rules: [{ allow: owner, operations: [read] }])
-	date: AWSDate!
-	merchant: String!
-	amount: Float!
-	category: String
-	receiptS3Key: String
+	date: AWSDate! #INVOICE_RECEIPT_DATE
+	subtotal: String! #SUBTOTAL
+	merchant: String! #VENDOR_NAME
+	amount: String! #AMOUNT_PAID
+	tax: String! #TAX
+	category: String # Will be a pre-defined enum
+	receiptS3Key: String!
 }
 
 type Mutation {
