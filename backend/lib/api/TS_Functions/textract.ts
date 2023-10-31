@@ -24,7 +24,23 @@ export function request(ctx: Context) {
 export function response(ctx: Context) {
 	const res = JSON.parse(ctx.result.body)
 	console.log('the summary', res.ExpenseDocuments[0].SummaryFields)
-	res.ExpenseDocuments[0].SummaryFields.forEach(() => {})
+	const summaryFields = res.ExpenseDocuments[0].SummaryFields
+	const response = {} as any
+	const expenseFields = [
+		'INVOICE_RECEIPT_DATE',
+		'SUBTOTAL',
+		'VENDOR_NAME',
+		'AMOUNT_PAID',
+		'TAX',
+	]
 
-	return ctx.result.body
+	summaryFields.forEach((summaryField: any) => {
+		if (expenseFields.includes(summaryField.Type.Text)) {
+			response[summaryField.Type.Text] = summaryField.ValueDetection.Text
+		}
+	})
+
+	console.log('the response', response)
+
+	return response
 }
