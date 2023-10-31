@@ -1,0 +1,18 @@
+type Expense @model @auth(rules: [{ allow: owner }]) {
+	id: ID!
+	owner: String! @auth(rules: [{ allow: owner, operations: [read] }])
+	date: AWSDate!
+	merchant: String!
+	amount: Float!
+	category: String
+	receiptS3Key: String
+}
+
+type Mutation {
+	createTextractExpense(receiptS3Key: String!): Expense! @aws_cognito_user_pools # ownership is created in the resolver
+}
+
+type Subscription {
+	onCreateTextractExpense(owner: ID!): Expense
+		@aws_subscribe(mutations: ["createTextractExpense"])
+}
