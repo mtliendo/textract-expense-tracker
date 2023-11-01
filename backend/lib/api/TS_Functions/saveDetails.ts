@@ -1,11 +1,7 @@
 import { AppSyncIdentityCognito, Context } from '@aws-appsync/utils'
 import { util } from '@aws-appsync/utils'
 import * as ddb from '@aws-appsync/utils/dynamodb'
-import {
-	CreateTextractExpenseMutation,
-	CreateTextractExpenseMutationVariables,
-	Expense,
-} from '../src/API'
+import { CreateTextractExpenseMutationVariables, Expense } from '../src/API'
 
 export function request(ctx: Context<CreateTextractExpenseMutationVariables>) {
 	const cognitoIdentity = ctx.identity as AppSyncIdentityCognito

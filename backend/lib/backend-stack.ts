@@ -26,5 +26,19 @@ export class BackendStack extends cdk.Stack {
 			userpool: auth.userPool,
 			identityPoolId: auth.identityPool.identityPoolId,
 		})
+
+		new cdk.CfnOutput(this, 'UserpoolId', {
+			value: auth.userPool.userPoolId,
+		})
+		new cdk.CfnOutput(this, 'IdentityPoolId', {
+			value: auth.identityPool.identityPoolId,
+		})
+		new cdk.CfnOutput(this, 'WebClientId', {
+			value: auth.userPoolClient.userPoolClientId,
+		})
+
+		new cdk.CfnOutput(this, 'BucketName', {
+			value: expenseBucket.bucketName,
+		})
 	}
 }

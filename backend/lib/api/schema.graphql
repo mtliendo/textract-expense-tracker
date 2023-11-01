@@ -2,10 +2,10 @@
 type Expense @model @auth(rules: [{ allow: owner }]) {
 	id: ID!
 	date: String! #INVOICE_RECEIPT_DATE
-	subtotal: String! #SUBTOTAL
 	merchant: String! #VENDOR_NAME
-	amount: String! #AMOUNT_PAID
+	subtotal: String! #SUBTOTAL
 	tax: String! #TAX
+	amount: String! #AMOUNT_PAID
 	category: String # Will be a pre-defined enum
 	receiptS3Key: String!
 }
