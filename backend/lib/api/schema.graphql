@@ -1,4 +1,3 @@
-#object.Type.Text to get the label. object.ValueDetection.Text to get the key
 type Expense @model @auth(rules: [{ allow: owner }]) {
 	id: ID!
 	date: String! #INVOICE_RECEIPT_DATE
@@ -15,6 +14,6 @@ type Mutation {
 }
 
 type Subscription {
-	onCreateTextractExpense(owner: ID!): Expense
+	onCreateTextractExpense: Expense
 		@aws_subscribe(mutations: ["createTextractExpense"])
 }

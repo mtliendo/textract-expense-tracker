@@ -98,5 +98,17 @@ export const createAmplifyGraphQLAPI = (
 		}`),
 	})
 
+	const noneDS = api.addNoneDataSource('NoneDS')
+
+	api.addResolver('Subscription.onCreateTextractExpense', {
+		typeName: 'Subscription',
+		fieldName: 'onCreateTextractExpense',
+		runtime: FunctionRuntime.JS_1_0_0,
+		dataSource: noneDS,
+		code: Code.fromAsset(
+			path.join(__dirname, 'JS_Functions/ownerSubscription.js')
+		),
+	})
+
 	return api
 }
