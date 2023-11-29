@@ -1,40 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AppSync Expense Tracker
+
+## Introduction
+
+AppSync Expense Tracker is a demo application that leverages a suite of AWS services for real-time, automated expense reporting. This application integrates AWS AppSync, Amazon Cognito, Amazon Textract, DynamoDB, and S3 to create a seamless yet simple user experience.
+
+### Key Features:
+
+- **Real-time Automated Expense Reporting**: Utilizes AWS AppSync for instant data synchronization.
+- **Secure Authentication**: Integrates Amazon Cognito for user authentication and management.
+- **Intelligent Document Processing**: Employs Amazon Textract for accurate extraction of expense details from images.
+- **Scalable Database Storage**: Uses DynamoDB for storing expense data with high availability.
+- **Reliable File Storage**: Leverages S3 for secure storage of expense images.
+
+## Frontend
+
+The frontend of AppSync Expense Tracker is built using React and NextJS, providing a robust and scalable web application. AWS Amplify UI libraries are integrated to offer a rich UI experience and JavaScript client-side helpers for seamless AWS interactions.
+
+### Frontend Features:
+
+- **React and NextJS**: Modern JavaScript frameworks for building interactive UIs.
+- **AWS Amplify UI Libraries**: Pre-built UI components and workflows for AWS services.
+
+## Backend
+
+The backend infrastructure is created using the AWS Cloud Development Kit (CDK), ensuring a programmatically defined, version-controlled, and reliable AWS environment.
+
+### Backend Features:
+
+- **AWS CDK**: Infrastructure as Code for defining cloud resources.
+- **Integration with AWS Services**: Seamless connectivity with AWS AppSync, Cognito, Textract, DynamoDB, and S3.
+
+## Functionality
+
+- **Expense Image Upload**: Users can upload images of their receipts or bills.
+- **Data Extraction and Storage**:
+  - **Amazon Textract**: Extracts details from the uploaded images.
+  - **DynamoDB**: Stores the extracted expense data.
+  - **S3 Bucket**: Stores the images, accessed via presigned URLs for security.
+
+## Sample Application
+
+This application is a sample implementation and serves as a blueprint for building real-time, automated expense tracking solutions. The contents of the S3 bucket are accessible via presigned URLs, ensuring data security and integrity.
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To get started with AppSync Expense Tracker, clone the repository and follow the setup instructions provided in the documentation.

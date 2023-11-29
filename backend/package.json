@@ -9,7 +9,7 @@
 		"watch": "tsc -w",
 		"test": "jest",
 		"cdk": "cdk",
-		"deploy": "npx aws-cdk deploy --profile focus-otter-sandbox --outputs-file cdk-output.json",
+		"deploy": "npx aws-cdk deploy --outputs-file cdk-output.json",
 		"predeploy": "node build.mjs"
 	},
 	"devDependencies": {
