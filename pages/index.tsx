@@ -28,7 +28,7 @@ import {
 	useTheme,
 	withAuthenticator,
 } from '@aws-amplify/ui-react'
-import { API } from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 import { FormEvent, useEffect, useState } from 'react'
 import { StorageManager, StorageImage } from '@aws-amplify/ui-react-storage'
 import '@aws-amplify/ui-react/styles.css'
@@ -49,7 +49,7 @@ function Home({ user, signOut }: HomeProps) {
 		Array<Expense> | []
 	>([])
 	const { tokens } = useTheme()
-	console.log(user)
+
 	useEffect(() => {
 		const variables: OnCreateExpenseSubscriptionVariables = {
 			owner: user.username,
@@ -102,25 +102,30 @@ function Home({ user, signOut }: HomeProps) {
 
 	const handleUploadSuccess = ({ key }: { key?: string | undefined }) => {
 		if (key) {
+			console.log('the key', key)
 			const variables: CreateTextractExpenseMutationVariables = {
-				receiptS3Key: key,
+				receiptS3Key: `public/${key}`,
 			}
 
 			API.graphql<GraphQLQuery<CreateTextractExpenseMutation>>({
 				query: createTextractExpense,
 				variables,
-			}).then((res) => {
-				console.log(res.data?.createTextractExpense)
-				if (res.data?.createTextractExpense) {
-					const textractRes = res.data.createTextractExpense
-					setDate(textractRes.date)
-					setMerchant(textractRes.merchant)
-					setSubtotal(textractRes.subtotal)
-					setTax(textractRes.tax)
-					setAmount(textractRes.amount)
-					setCurrentExpenseId(textractRes.id)
-				}
 			})
+				.then((res) => {
+					console.log(res.data?.createTextractExpense)
+					if (res.data?.createTextractExpense) {
+						const textractRes = res.data.createTextractExpense
+						setDate(textractRes.date)
+						setMerchant(textractRes.merchant)
+						setSubtotal(textractRes.subtotal)
+						setTax(textractRes.tax)
+						setAmount(textractRes.amount)
+						setCurrentExpenseId(textractRes.id)
+					}
+				})
+				.catch((e) => {
+					console.log('uh oh', e)
+				})
 		}
 	}
 
@@ -143,7 +148,7 @@ function Home({ user, signOut }: HomeProps) {
 					>
 						<StorageManager
 							acceptedFileTypes={['image/*']}
-							accessLevel="protected"
+							accessLevel="public"
 							maxFileCount={1}
 							displayText={{
 								dropFilesText: 'drag-and-drop here',
@@ -219,8 +224,8 @@ function Home({ user, signOut }: HomeProps) {
 												width={'200px'}
 												height={'250px'}
 												alt={`${currExpense.merchant} receipt`}
-												imgKey={currExpense.receiptS3Key}
-												accessLevel="protected"
+												imgKey={currExpense.receiptS3Key.split('/')[1]}
+												accessLevel="public"
 											/>
 										</TableCell>
 									</TableRow>

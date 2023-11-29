@@ -1,0 +1,14 @@
+{
+  "ExpenseBackendStack": {
+    "awsAppsyncApiEndpoint": "https://zvxwu5n2frd4thpbuxjgznslaa.appsync-api.us-east-1.amazonaws.com/graphql",
+    "awsAppsyncApiId": "rret6jgrpfaaziyjcnx2mlh2by",
+    "awsAppsyncAuthenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "BucketName": "expensebackendstack-expensebucketf9054048-gc1fqggqchtv",
+    "amplifyApiModelSchemaS3Uri": "s3://expensebackendstack-expenseexampleamplifycodegena-1sjtpeit7bhzn/model-schema.graphql",
+    "awsAppsyncAdditionalAuthenticationTypes": "AWS_IAM",
+    "IdentityPoolId": "us-east-1:bec1c769-4c85-4725-895b-3636d9ad7143",
+    "awsAppsyncRegion": "us-east-1",
+    "UserpoolId": "us-east-1_AsB92drf5",
+    "WebClientId": "358lm2jdg15vtr7n59l5pg3cq6"
+  }
+}

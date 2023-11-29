@@ -1,6 +1,8 @@
 import { Context } from '@aws-appsync/utils'
 
 export function request(ctx: Context) {
+	console.log('bucketname', ctx.stash.bucketName)
+	console.log('receiptkey', ctx.args.receiptS3Key)
 	return {
 		resourcePath: '/',
 		method: 'POST',
@@ -23,6 +25,8 @@ export function request(ctx: Context) {
 
 export function response(ctx: Context) {
 	const res = JSON.parse(ctx.result.body)
+	console.log('the res', res)
+	console.log('the res', res.ExpenseDocuments)
 	console.log('the summary', res.ExpenseDocuments[0].SummaryFields)
 	const summaryFields = res.ExpenseDocuments[0].SummaryFields
 	const response = {} as any

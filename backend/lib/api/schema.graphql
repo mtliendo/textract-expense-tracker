@@ -1,16 +1,16 @@
 type Expense @model @auth(rules: [{ allow: owner }]) {
 	id: ID!
-	date: String! #INVOICE_RECEIPT_DATE
-	merchant: String! #VENDOR_NAME
-	subtotal: String! #SUBTOTAL
-	tax: String! #TAX
-	amount: String! #AMOUNT_PAID
-	category: String # Will be a pre-defined enum
+	date: String!
+	merchant: String!
+	subtotal: String!
+	tax: String!
+	amount: String!
+	category: String
 	receiptS3Key: String!
 }
 
 type Mutation {
-	createTextractExpense(receiptS3Key: String!): Expense! @aws_cognito_user_pools # ownership is created in the resolver
+	createTextractExpense(receiptS3Key: String!): Expense! @aws_cognito_user_pools
 }
 
 type Subscription {
